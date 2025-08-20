@@ -1,18 +1,22 @@
-const div = document.querySelector(".div");
+const burgerBtn = document.querySelector(".burgerMenuBtn");
+const burgerContainer = document.querySelector(".burgerMenuContainer");
 
-div.addEventListener("click", function () {
-  //   this.classList.add("div2");
-  //   this.classList.remove("div");
-  this.classList.toggle("div2");
-});
+function burgerClickHandler(e) {
+  burgerContainer.classList.toggle("burgerMenuContainerHide");
+  burgerContainer.classList.toggle("burgerMenuContainerActive");
+  e.stopPropagation();
+}
 
-div.style.color = "red";
+burgerBtn.addEventListener("click", burgerClickHandler);
 
-// класи - рядок з іменами класів, розділеними пробілами
-// div.className = "div div2";
+function bodyClickHandler() {
+  burgerContainer.classList.add("burgerMenuContainerHide");
+  burgerContainer.classList.remove("burgerMenuContainerActive");
+}
 
-const h1 = document.querySelector("h1");
+document.body.addEventListener("click", bodyClickHandler /*{ capture: true }*/);
 
-h1.addEventListener("click", function () {
-  this.classList.toggle("header");
-});
+// body capture -
+// btn capture
+// btn; X
+// body; +
