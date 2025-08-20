@@ -10,3 +10,9 @@ div.style.color = "red";
 
 // класи - рядок з іменами класів, розділеними пробілами
 // div.className = "div div2";
+
+const h1 = document.querySelector("h1");
+
+h1.addEventListener("click", function () {
+  this.classList.toggle("header");
+});
