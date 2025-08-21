@@ -1,22 +1,30 @@
-const burgerBtn = document.querySelector(".burgerMenuBtn");
-const burgerContainer = document.querySelector(".burgerMenuContainer");
+"use strict";
 
-function burgerClickHandler(e) {
-  burgerContainer.classList.toggle("burgerMenuContainerHide");
-  burgerContainer.classList.toggle("burgerMenuContainerActive");
-  e.stopPropagation();
-}
+const section = document.createElement("section");
 
-burgerBtn.addEventListener("click", burgerClickHandler);
+const divRoot = document.querySelector("#root");
 
-function bodyClickHandler() {
-  burgerContainer.classList.add("burgerMenuContainerHide");
-  burgerContainer.classList.remove("burgerMenuContainerActive");
-}
+// додавання дочірнього елемента append/prepend
 
-document.body.addEventListener("click", bodyClickHandler /*{ capture: true }*/);
+divRoot.append(section);
+section.textContent = "Lorem ipsum";
+section.style.backgroundColor = "grey";
 
-// body capture -
-// btn capture
-// btn; X
-// body; +
+const article = document.createElement("article");
+divRoot.prepend(article);
+article.textContent = "article is the first child";
+
+// додавання сіблінгів - before/after
+
+const btn = document.createElement("button");
+
+section.after(btn);
+btn.textContent = "new button";
+
+// видалення
+
+const divForRemove = document.querySelector(".removable");
+
+divForRemove.addEventListener("mouseenter", function () {
+  this.remove();
+});
